@@ -43,10 +43,6 @@ exports.getOneUser = async (req, res) => {
 
 exports.createNewUser = async (req, res) => {
   try {
-    // let currentUserId = await User.find({}).sort({ id: -1 }).limit(1).then((lastUser) => {
-    //     return lastUser[0].id
-    // });
-    // currentUserId += 1;
     const createUser = {
       // id: currentUserId,
       ...req.body,
