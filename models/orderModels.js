@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const courseSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
   ownerId: String,
   ordername: String,
   createdDate: Date,
@@ -9,6 +9,6 @@ const courseSchema = new mongoose.Schema({
   status: String,
 });
 
-const Course = mongoose.model("Course", courseSchema);
+const Order = mongoose.model("Order", orderSchema);
 
-module.exports = Course;
+module.exports = Order;

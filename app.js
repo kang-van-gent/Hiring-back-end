@@ -7,6 +7,10 @@ var logger = require("morgan");
 let cors = require("cors");
 
 const userController = require("./routes/userRoute");
+const postController = require("./routes/postRoute");
+const courseController = require("./routes/courseRoute");
+const commentController = require("./routes/commentRoute");
+const orderController = require("./routes/orderRoute");
 
 var app = express();
 
@@ -24,6 +28,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // route
 app.use("/api/users", userController);
+app.use("/api/post", postController);
+app.use("/api/course", courseController);
+app.use("/api/comment", commentController);
+app.use("/api/order", orderController);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

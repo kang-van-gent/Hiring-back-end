@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const courseSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
   postId: String,
   userId: String,
   comment: String,
@@ -8,6 +8,6 @@ const courseSchema = new mongoose.Schema({
   likes: Number,
 });
 
-const Course = mongoose.model("Course", courseSchema);
+const Comment = mongoose.model("Comment", commentSchema);
 
-module.exports = Course;
+module.exports = Comment;
