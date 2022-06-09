@@ -15,6 +15,8 @@ mongoose
   .then((con) => {
     console.log(con.connections);
     console.log("DB connection successful");
+    console.log(`Api URL : http://localhost:8000/api/`);
+
   })
   .catch((err) => {
     console.log("Cannot connect to DB", err);
