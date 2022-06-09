@@ -1,5 +1,6 @@
 const User = require("../models/userModels");
 
+// Get all users >>... Working 
 exports.getAllUsers = async (req, res) => {
   try {
     const user = await User.find();
@@ -16,21 +17,22 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
+// Get user that login by email and password  >>... Working
 exports.getOneUser = async (req, res) => {
   try {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
-    const user = await User.findOne({ username: username, password: password });
+    const user = await User.findOne({ email: email, password: password });
     if (user) {
       res.status(200).json({
         status: "success",
-        data: { username: username, password: password },
+        data: { email: email, password: password },
       });
     } else {
       res.status(404).json({
         status: "fail",
         message: "No user found",
-        log: { username: username, password: password },
+        log: { email: email, password: password },
       });
     }
   } catch (err) {
@@ -41,6 +43,7 @@ exports.getOneUser = async (req, res) => {
   }
 };
 
+// Creating new user >>... Working 
 exports.createNewUser = async (req, res) => {
   try {
     const createUser = {
@@ -59,7 +62,7 @@ exports.createNewUser = async (req, res) => {
     });
   }
 };
-
+// Find user and update user details
 exports.updateUser = async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
@@ -86,6 +89,7 @@ exports.updateUser = async (req, res) => {
   }
 };
 
+// To delete user  >>... Working
 exports.deleteUser = async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
@@ -109,7 +113,8 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
-exports.getUser = async (req, res) => {
+// Search for username already used.
+exports.getUsername = async (req, res) => {
   try {
     const username = req.body.username;
     const user = await User.findOne({ username: username });
@@ -133,6 +138,32 @@ exports.getUser = async (req, res) => {
   }
 };
 
+// Search for email already used.
+exports.getEmail = async (req, res) => {
+  try {
+    const email = req.body.email;
+    const user = await User.findOne({ email: email });
+    if (user) {
+      res.status(200).json({
+        status: "success",
+        data: { user },
+      });
+    } else {
+      res.status(200).json({
+        status: "fail",
+        message: "No user found",
+        log: { user },
+      });
+    }
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
+
+// Find user and update user infomation for update their password
 exports.updateUserPass = async (req, res) => {
   try {
     const username = req.body.username;

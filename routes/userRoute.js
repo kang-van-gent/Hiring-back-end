@@ -14,14 +14,18 @@ router
     .delete(userController.deleteUser);
 router
     .route('/username')
-    .post(userController.getUser);
+    .post(userController.getUsername);
     
 router
     .route('/newpass')
     .put(userController.updateUserPass);
         
 router
-    .route('/getone')
-    .post(userController.getOneUser)
+    .route('/login')
+    .post(userController.getOneUser);
+
+router
+    .route('/email')
+    .post(userController.getEmail)
 module.exports = router;
 
